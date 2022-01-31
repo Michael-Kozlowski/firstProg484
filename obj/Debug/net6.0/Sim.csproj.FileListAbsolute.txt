@@ -1,0 +1,12 @@
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\bin\Debug\net6.0\Sim.deps.json
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\bin\Debug\net6.0\Sim.dll
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\bin\Debug\net6.0\ref\Sim.dll
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\bin\Debug\net6.0\Sim.pdb
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.csproj.AssemblyReference.cache
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.AssemblyInfoInputs.cache
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.AssemblyInfo.cs
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.csproj.CoreCompileInputs.cache
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.dll
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\ref\Sim.dll
+C:\Users\mkozl\Documents\MEE484AdvComp\InClassPrograms\firstProg\Sim\obj\Debug\net6.0\Sim.pdb

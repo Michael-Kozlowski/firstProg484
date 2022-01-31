@@ -19,10 +19,11 @@ namespace Sim
         public SimplePend()
         {
             x = new double[n];
-            f = new double[n];
+            f = new double[4];
 
             x[0] = 1.0;
             x[1] = 0.0;
+            
         }
 
         //--------------------------------------------------------------------
@@ -38,7 +39,7 @@ namespace Sim
             }
             //Console.WriteLine($"{f[0].ToString()}   {f[1].ToString()}");
         }
-
+        
         //--------------------------------------------------------------------
         // rhsFunc: Calculate the right handside of the pendulum equations 
         //--------------------------------------------------------------------
@@ -47,6 +48,8 @@ namespace Sim
             ff[0] = st[1];
             ff[1] = -g/len * Math.Sin(st[0]);
         }
+
+
 
         //--------------------------------------------------------------------
         // Getters and Setters
