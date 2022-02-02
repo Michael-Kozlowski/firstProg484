@@ -12,18 +12,17 @@ namespace Sim
         int n = 2;                // number of states
         private double[] x;       // array of states
         private double[] f;       // right side of the equation value
-
         //--------------------------------------------------------------------
         // constructor
         //--------------------------------------------------------------------
         public SimplePend()
         {
-            x = new double[n];
-            f = new double[4];
+            x = new double[n];  // array for initial conditions 
+            f = new double[n];  // dtheta/dt and dw/dt 
 
-            x[0] = 1.0;
-            x[1] = 0.0;
-            
+            x[0] = 1.0;  // initial condition for theta in rad
+            x[1] = 0.0;  // initial condition for w (omega) in rad/s 
+           
         }
 
         //--------------------------------------------------------------------
@@ -48,7 +47,9 @@ namespace Sim
             ff[0] = st[1];
             ff[1] = -g/len * Math.Sin(st[0]);
         }
-
+        //--------------------------------------------------------------------
+        // rkinternal: defines the variables w[] and theta[]
+        //--------------------------------------------------------------------
 
 
         //--------------------------------------------------------------------
