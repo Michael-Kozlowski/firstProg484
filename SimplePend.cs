@@ -10,112 +10,79 @@ namespace Sim
         private double len = 1.1;     // pendulum length
         private double g = 9.81;      // gravitation field stregth 
 
-        // int n = 2;                 // number of states
-        public double[] theta;       // array of states
-        public double[] w;           // right side of the equation value
-        public double[] k1;           // RK slopes
-        public double[] k2; 
-        public double theta_answer;
-        public double w_answer;
-        string s;
+        // int n = 2;                 // number of states (Euler's Method)
+        public double[] theta;        // array of states (RK Method)
+        public double[] w;            // right side of the equation value (RK Method)
+        public double[] k1;           // RK slopes (RK Method)
+        public double[] k2;           // RK slopes (RK Method)
+        public double theta_answer;   // Answer for theta value (RK Method)
+        public double w_answer;       // Answer for w value (RK Method)
+
         //--------------------------------------------------------------------
         // constructor
         //--------------------------------------------------------------------
         public SimplePend()
         {
-            theta = new double[4];       // holds values for theta and w inbetween each step 
+            theta = new double[4];       // Holds values for theta inbetween each step (RK Method)
             
-            w = new double[4];           // dtheta/dt and dw/dt 
+            w = new double[4];           // Holds values for w inbetween each step (RK Method)
  
-            k1 = new double[4];        // RK slopes 
+            k1 = new double[4];          // Holds slope values (RK Method)
 
-            k2 = new double[4]; 
+            k2 = new double[4];          // Holds slope values (RK Method)
 
-            theta[0] = 1;
+            theta[0] = 1;                // Initial condition for theta in rad (RK Method)
 
-            w[0] = 0;
+            w[0] = 0;                    // Initial condtion for w in rad/s (RK Method)
 
-            s = " ";
-            theta_answer = 0.0;
-            w_answer = 0.0;
-            // x[0] = 1.0;  // initial condition for theta in rad
-            // x[1] = 0.0;  // initial condition for w (omega) in rad/s
+            // x[0] = 1.0;  // Initial condition for theta in rad (Euler's Method)
+            // x[1] = 0.0;  // Initial condition for w (omega) in rad/s (Euler's Method)
         }
 
-        
-
-        //--------------------------------------------------------------------
-        // RungeKutta: calculates answer
-        //-------------------------------------------------------------------- 
-        /*public void RungeKutta(double dt)
-        {
-            theta[0] = 1.0;
-            w[0] = 0.0;
-            RKslope(theta, w, k1, k2, dt);
-
-            theta_answer = theta[0] + 1/6*(k1[0] + 2*k1[1] + 2*k1[2] + k1[3]) * dt;
-            w_answer     = w[0]     + 1/6*(k2[0] + 2*k2[1] + 2*k2[2] + k2[3]) * dt;
-        }
-        */
         //--------------------------------------------------------------------
         // RKslope: Calculates the slopes (k) for each iteration 
         //--------------------------------------------------------------------
-
-        public void RungeKutta(double dt, double t, double tEnd)   //, double tt, double ww
-        {
-            while (t < tEnd)
+        public void RungeKutta(double dt, double t, double tEnd)   
+        {            
+            for (int n=0;n<4;++n)
             {
 
-            
-                for (int n=0;n<4;++n)
+                if (n == 0)
                 {
-
-                    if (n == 0)
-                    {
-                    // RK4internal(theta[n], w[n], null, null);
-                        k1[0] = w[0];
-                        k2[0] = -g/len*Math.Sin(theta[0]);
-                        theta[1] = theta[0] + k1[0]*dt/2;
-                        w[1]     = w[0]     + k2[0]*dt/2;
-                    }
-                    else if (n == 1)
-                    {
-                    // RK4internal(theta[n], w[n], k1[n-1], k2[n-1]);
-                        k1[1] = w[1];
-                        k2[1] = -g/len*Math.Sin(theta[1]);
-                        theta[2] = theta[0] + k1[1]*dt/2;
-                        w[2]     = w[0]     + k2[1]*dt/2;
-                    }
-
-                    else if (n == 2)
-                    {
-                    // RK4internal(theta[n], w[n], k1[n-1], k2[n-1]);
-                        k1[2] = w[2];
-                        k2[2] = -g/len*Math.Sin(theta[2]);
-                        theta[3] = theta[0] + k1[2]*dt/2;
-                        w[3]     = w[0]     + k2[2]*dt/2;
-                    }
-
-                    else
-                    {
-                    // RK4internal(theta[n], w[n], null, null);
-                        k1[3] = w[3];
-                        k2[3] = -g/len*Math.Sin(theta[3]);
-                    }
-
+                    k1[0] = w[0];
+                    k2[0] = -g/len*Math.Sin(theta[0]);
+                    theta[1] = theta[0] + k1[0]*dt/2;
+                    w[1]     = w[0]     + k2[0]*dt/2;
                 }
-                // Current error: Value of theta answer is being passed as 1 rather than .99875
-                theta_answer = theta[0] + 1.0/6.0*(k1[0] + 2*k1[1] + 2*k1[2] + k1[3]) * dt;
-                w_answer     = w[0]     + 1.0/6.0*(k2[0] + 2*k2[1] + 2*k2[2] + k2[3]) * dt;  // need to pass theta_ answer and w_answer to theta[0] and w[0]
+                else if (n == 1)
+                {
+                    k1[1] = w[1];
+                    k2[1] = -g/len*Math.Sin(theta[1]);
+                    theta[2] = theta[0] + k1[1]*dt/2;
+                    w[2]     = w[0]     + k2[1]*dt/2;
+                }
 
-                theta[0] = theta_answer;
-                w[0] = w_answer;
-                
-                s = $"{t.ToString("0.####")}   {theta_answer.ToString("0.####")}   {w_answer.ToString("0.####")}";
-                Console.WriteLine(s);
+                else if (n == 2)
+                {
+                    k1[2] = w[2];
+                    k2[2] = -g/len*Math.Sin(theta[2]);
+                    theta[3] = theta[0] + k1[2]*dt/2;
+                    w[3]     = w[0]     + k2[2]*dt/2;
+                }
 
-                t += 0.02;
+                else
+                {
+                    k1[3] = w[3];
+                    k2[3] = -g/len*Math.Sin(theta[3]);
+                }
+
             }
+            
+            theta_answer = theta[0] + 1.0/6.0*(k1[0] + 2*k1[1] + 2*k1[2] + k1[3]) * dt;
+            w_answer     = w[0]     + 1.0/6.0*(k2[0] + 2*k2[1] + 2*k2[2] + k2[3]) * dt;  
+
+            theta[0] = theta_answer;
+            w[0] = w_answer;
         }
         
         //--------------------------------------------------------------------
@@ -129,7 +96,6 @@ namespace Sim
             {
                 x[i] = x[i] + f[i] * dt;
             }
-            //Console.WriteLine($"{f[0].ToString()}   {f[1].ToString()}");
         }
         
         //--------------------------------------------------------------------
@@ -142,7 +108,6 @@ namespace Sim
         }
         */
        
-
         //--------------------------------------------------------------------
         // Getters and Setters
         //--------------------------------------------------------------------
