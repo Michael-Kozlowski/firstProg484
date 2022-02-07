@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SimUI/1.0.0": {
+        "dependencies": {
+          "Sim": "1.0.0"
+        },
+        "runtime": {
+          "SimUI.dll": {}
+        }
+      },
+      "Sim/1.0.0": {
+        "runtime": {
+          "Sim.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SimUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Sim/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
